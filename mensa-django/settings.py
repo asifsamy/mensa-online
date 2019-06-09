@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mensa.urls'
+ROOT_URLCONF = 'mensa-django.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mensa.wsgi.application'
+WSGI_APPLICATION = 'mensa-django.wsgi.application'
 
 
 # Database
