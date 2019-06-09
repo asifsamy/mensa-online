@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
     'menus',
 ]
 
@@ -124,3 +125,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# webpack loader
+WEBPACK_LOADER = {
+    'DEFAULT':{
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME':'',
+        'STATS_FILE':os.path.join(BASE_DIR,'mensa-vue/webpack-stats.json'),
+        'POLL_INTERVAL':0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js','.+\.map']
+    }
+}
