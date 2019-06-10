@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Telling Django that we accept connections from everywhere
+CORS_ORIGIN_ALLOW_ALL = True
+
+# If do not want to allow connections from everywhere, comment the line of code above and indicate the address that should be allowed to connect in the follwing list.
+CORS_ORIGIN_WHITELIST = [
+    # "http://localhost:8080",
+    # "http://127.0.0.1:8080",
+]
+
 
 # Application definition
 
@@ -40,10 +49,12 @@ INSTALLED_APPS = [
     'webpack_loader',
     'menus',
     'testApp',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

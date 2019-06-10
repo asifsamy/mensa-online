@@ -1,43 +1,78 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <form @submit.prevent="submitNote">
+  <!-- <form> -->
+    <label>Title</label>
+    <input type="text" v-model="formData.title">
+    <label>Content</label>
+    <textarea v-model="formData.content"></textarea>
+    <br>
+    <!-- <button type="submit" v-on:click="submitNote">Submit</button> -->
+    <button type="submit">Submit</button>
+  </form>
+  <h1>POST Result</h1>
+  <p>{{msg}}</p>
+  <br>
+  <h1>All notes</h1>
+  <ul>
+    <li v-for="note in notes" :key="note.id">
+      <h3>{{note.title}}</h3>
+      <h5>{{note.created}}</h5>
+      <p>{{note.content}}</p>
+    </li>
+  </ul>
   </div>
 </template>
 
 <script>
+import api from './api/index.js'
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: '',
+      formData:{
+        title:'',
+        content:'',
+      },
+      notes: []
     }
+  },
+  methods:{
+    submitNote(){
+      api.fetchNotes('post',null,this.formData).then(res => {
+        this.msg = 'Saved'
+      }).catch((e) => {
+        this.msg = e.response
+      })
+    },
+    fetchAllNotes(){
+      api.fetchNotes('get',null,null).then(res => {
+        this.notes = res.data
+        // Check the data from the console
+        console.log(this.notes)
+      }).catch((e) => {
+        console.log(e)
+      })
+    }
+  },
+  mounted(){
+    // fetch all notes once component is mounted
+    this.fetchAllNotes()
   }
 }
 </script>
 
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 h1, h2 {
@@ -57,4 +92,26 @@ li {
 a {
   color: #42b983;
 }
+
+input, textarea{
+  width: 100%;
+  display: block;
+  padding: 6px 10 px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+label{
+  margin-top: 15px;
+  display: block;
+  padding: 5px 5px;
+}
+
+button{
+  background: #000;
+  color: #fff;
+  border-radius: 3px;
+  padding: 6px 3px;
+}
+
 </style>
