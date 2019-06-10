@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'menus',
     'testApp',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -137,4 +138,16 @@ WEBPACK_LOADER = {
         'TIMEOUT': None,
         'IGNORE': ['.+\.hot-update.js','.+\.map']
     }
+}
+
+#Rest config
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+
+    # Method#1
+
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
 }
