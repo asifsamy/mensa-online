@@ -4,6 +4,7 @@
     <ul>
       <li><router-link to="/test_login">Test Login</router-link></li>
       <li><router-link to="/test_api">Test Api</router-link></li>
+      <li><router-link to="/base">Template-Base</router-link></li>
     </ul>
     <router-view></router-view>
   </div>

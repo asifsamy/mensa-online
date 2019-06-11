@@ -1,6 +1,6 @@
 <template>
     <div>
-        Login
+    Test login interface
     </div>
 </template>
 <script>

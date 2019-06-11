@@ -42,6 +42,7 @@ export default {
     submitNote(){
       api.fetchNotes('post',null,this.formData).then(res => {
         this.msg = 'Saved'
+        console.log(this.formData)
       }).catch((e) => {
         this.msg = e.response
       })
@@ -85,7 +86,7 @@ ul {
 }
 
 li {
-  display: inline-block;
+  /* display: inline-block; */
   margin: 0 10px;
 }
 
