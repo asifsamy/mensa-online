@@ -6,7 +6,7 @@ import base from './components/base.vue'
 const routes = [
     // D2. Create the path object which will be used to call the component
     {path: '/test_login', component: test_login},
-    {path:'/test_api', component: test_api},
+    {path:'/', component: test_api},
     {path:'/base', component:base}
 ];
 
