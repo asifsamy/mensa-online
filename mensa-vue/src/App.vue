@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  <router-view></router-view>
   <form @submit.prevent="submitNote">
   <!-- <form> -->
     <label>Title</label>
