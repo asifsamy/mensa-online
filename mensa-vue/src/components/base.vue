@@ -50,24 +50,21 @@ export default {
         // <!-- meta character set -->
 		// {charset="UTF-8"},
     ],
-    // base: [
-    //     {href:"/"},
-    // ],
     // link tags
     link: [
         {href:"https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700", rel:"stylesheet"},
         {rel:"stylesheet", href:"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"},
         
         // CSS
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/main.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/linearicons.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/font-awesome.min.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/bootstrap.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/magnific-popup.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/jquery-ui.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/nice-select.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/animate.min.css"},
-        {rel:"stylesheet", type:"text/html",href:"/common/static/css/owl.carousel.css"},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/main.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/linearicons.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/font-awesome.min.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/bootstrap.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/magnific-popup.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/jquery-ui.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/nice-select.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/animate.min.css", async: true, body: true},
+        {rel:"stylesheet", type:"text/html",href:"/common/static/css/owl.carousel.css", async: true, body: true},
     ],
   
     script: [
