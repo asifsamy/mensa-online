@@ -5,7 +5,7 @@
                 <div class="container">
                       <div class="row justify-content-center">
                           <div id="logo">
-                            <a href="index.html"><img src="./static/img/logo.png" alt="" title="" /></a>
+                            <a href="index.html"><img src="src/components/common/static/img/logo.png" alt="" title="" /></a>
                           </div>
                       </div>			  					
                 </div>
