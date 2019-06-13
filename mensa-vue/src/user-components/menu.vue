@@ -25,18 +25,29 @@
            
             <div class="filters-content">
                 <div class="row grid">
+
+					<!-- WORKING WITH API HERE -->
+
                     <div class="col-md-6 all Veg">
 						<div class="single-menu">
 							<div class="title-wrap d-flex justify-content-between">
-								<h4>Cappuccion</h4>
+								<!-- calling note title -->
+								<!-- <h4>{{notes[0].title}}</h4> -->
+								<h4>Cappucino</h4>
 								<h4 class="price">$49</h4>
-							</div>			
+							</div>	
+							<!-- calling note content -->
 							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>		
+								<!-- {{notes[0].content}} -->
+								This is just a lot of text
+							</p>	
+				
 							<h4 class="calorie">50 calories</h4>
 						</div>					                               
-                    </div>      
+                    </div>
+
+					<!-- WORKING WITH API HERE -->
+
                     <div class="col-md-6 all Veg">						
 						<div class="single-menu">
 							<div class="title-wrap d-flex justify-content-between">
@@ -128,13 +139,42 @@
 import header from './common/header.vue'
 import banner from './common/banner.vue'
 import footer from './common/footer.vue'
+// Import API
+import api from './api/index.js'
 
 export default {
-components:{
-    'cheader':header,
-    'cbanner':banner,
-    'cfooter':footer,
+	components:{
+		'cheader':header,
+		'cbanner':banner,
+		'cfooter':footer,
+  	},
+    data () {
+    return {
+      	// formData:{
+		// 	title:'',
+		// 	content:'',
+      	// },
+		notes: [],
+		title:'',
+		content:'',
+
+    }
   },
+	methods:{
+		fetchAllNotes(){
+			api.fetchNotes('get',null,null).then(res => {
+				this.notes = res.data
+				// Check the data from the console
+				console.log(this.notes)
+			}).catch((e) => {
+				console.log(e)
+			})
+		}
+	},
+	mounted(){
+		// fetch all notes once component is mounted
+		this.fetchAllNotes()
+	}
 }
 </script>
 
