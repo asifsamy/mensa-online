@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Telling Django that we accept connections from everywhere
+CORS_ORIGIN_ALLOW_ALL = True
+
+# If do not want to allow connections from everywhere, comment the line of code above and indicate the address that should be allowed to connect in the follwing list.
+CORS_ORIGIN_WHITELIST = [
+    # "http://localhost:8080",
+    # "http://127.0.0.1:8080",
+]
+
 
 # Application definition
 
@@ -37,10 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
     'menus',
+    'testApp',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,13 +64,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mensa.urls'
+ROOT_URLCONF = 'mensa-django.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR,'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -70,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mensa.wsgi.application'
+WSGI_APPLICATION = 'mensa-django.wsgi.application'
 
 
 # Database
@@ -79,7 +93,7 @@ WSGI_APPLICATION = 'mensa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
     }
 }
 
@@ -124,3 +138,27 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# webpack loader
+WEBPACK_LOADER = {
+    'DEFAULT':{
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME':'',
+        'STATS_FILE':os.path.join(BASE_DIR,'mensa-vue/webpack-stats.json'),
+        'POLL_INTERVAL':0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js','.+\.map']
+    }
+}
+
+#Rest config
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+
+    # Method#1
+
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+}

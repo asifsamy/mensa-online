@@ -1,0 +1,105 @@
+<template>
+    <div>
+    <cheader></cheader>
+    <cbanner></cbanner>
+    <!-- Start menu-area Area -->
+    <section class="menu-area section-gap" id="menu">
+        
+        <div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">What kind of Foods we serve for you</h1>
+					</div>
+				</div>
+			</div>	
+
+            <ul class="filter-wrap filters col-lg-12 no-padding">
+                <li class="active" data-filter="*">All Menu</li>
+                <li data-filter=".Veg">Veg</li>
+                <li data-filter=".Nonveg">Non-Veg</li>
+				<li data-filter=".salads">Salads</li>
+                <li data-filter=".desserts">Desserts</li>
+                <li data-filter=".beverages">Beverages</li>					
+            </ul>
+           
+            <div class="filters-content">
+
+
+				<!-- WORKING WITH API HERE -->
+
+                <div class="row grid">
+					<!-- Add BIDDING for data-filter in the follwing class -->
+                    <div class="col-md-6 all Veg" v-for="menu in menus" :key="menu.id">
+						<div class="single-menu">
+							<div class="title-wrap d-flex justify-content-between">
+								<h4>{{menu.title}}</h4>
+								<h4 class="price">${{menu.price_guest}}</h4>
+							</div>	
+							<p>
+								{{menu.description}}
+							</p>	
+							<h4 class="calorie">Calories {{menu.calories}}</h4>
+						</div>					                               
+                    </div>
+
+					<!-- STOP WORKING WITH API HERE -->
+							
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- End menu-area Area -->		
+    <cfooter></cfooter>
+    </div>
+    
+</template>
+
+<script>
+// Import components
+import header from './common/header.vue'
+import banner from './common/banner.vue'
+import footer from './common/footer.vue'
+// Import API
+import api from './api/index.js'
+
+export default {
+	components:{
+		'cheader':header,
+		'cbanner':banner,
+		'cfooter':footer,
+  	},
+    data () {
+    return {
+      	// formData:{
+		// 	title:'',
+		// 	content:'',
+      	// },
+		menus: [],
+		title:'',
+		content:'',
+
+    }
+  },
+	methods:{
+		fetchAllMenu(){
+			api.fetchMenu('get',null,null).then(res => {
+				this.menus = res.data
+				// Check the data from the console
+				console.log(this.menus)
+			}).catch((e) => {
+				console.log(e)
+			})
+		}
+	},
+	mounted(){
+		// fetch all menus once component is mounted
+		this.fetchAllMenu()
+	}
+}
+</script>
+
+<style>
+
+</style>
