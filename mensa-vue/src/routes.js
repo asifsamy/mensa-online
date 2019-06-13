@@ -1,13 +1,15 @@
-// D1. Import the component from the components folder.
-import test_login from './components/test_login.vue'
-import test_api from './components/test_api.vue'
-import base from './components/base.vue'
+// D1. Import the component from the user-components folder.
+
+import menu from './user-components/menu.vue'
+import index from './user-components/index.vue'
+import test_api from './user-components/test_api.vue'
 
 const routes = [
     // D2. Create the path object which will be used to call the component
-    {path: '/test_login', component: test_login},
     {path:'/test_api', component: test_api},
-    {path:'/base', component:base}
+    {path:'/menu', component:menu},
+    {path:'/index', component:index},
+    {path:'/', component:index},
 ];
 
 // D3. Export the routes as default. This will be used when Vue start to render the DOM.

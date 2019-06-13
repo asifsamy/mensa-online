@@ -1,6 +1,10 @@
 <template>
-<!-- Start menu-area Area -->
+    <div>
+    <cheader></cheader>
+    <cbanner></cbanner>
+    <!-- Start menu-area Area -->
     <section class="menu-area section-gap" id="menu">
+        
         <div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="menu-content pb-70 col-lg-8">
@@ -114,11 +118,23 @@
         </div>
     </section>
     <!-- End menu-area Area -->		
+    <cfooter></cfooter>
+    </div>
+    
 </template>
 
 <script>
+// Import components
+import header from './common/header.vue'
+import banner from './common/banner.vue'
+import footer from './common/footer.vue'
+
 export default {
-    
+components:{
+    'cheader':header,
+    'cbanner':banner,
+    'cfooter':footer,
+  },
 }
 </script>
 

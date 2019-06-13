@@ -5,7 +5,7 @@
                 <div class="container">
                       <div class="row justify-content-center">
                           <div id="logo">
-                            <a href="index.html"><img src="src/components/common/static/img/logo.png" alt="" title="" /></a>
+                            <a href="index.html"><img src="src/user-components/common/static/img/logo.png" alt="" title="" /></a>
                           </div>
                       </div>			  					
                 </div>
@@ -15,10 +15,13 @@
                     <nav id="nav-menu-container">
                   
                         <ul class="nav-menu">
-                          <li><a href="index.html">Home</a></li>
+
+                          <li><router-link to="/index">Home</router-link></li>
+                          <!-- <li><a href="index.html">Home</a></li> -->
+
                           <li><a href="login.html">Login</a></li>
                           <li><a href="signup.html">Signup</a></li>
-                          <li><a href="menu.html">Menu</a></li>
+                          <li><router-link to="/menu">Menu</router-link></li>
 						  <li><a href="preorder.html">Pre-Order</a></li>
                          <li><a href="#wallet">Wallet</a>
 						  			<ul>
