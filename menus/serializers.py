@@ -2,9 +2,9 @@
 Comments here
 """
 from rest_framework import serializers
-from testApp.models import Note
+from menus.models import Menu
 
-class NoteSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Note
+        model=Menu
         fields="__all__"

@@ -1,7 +1,8 @@
 from testApp.models import Note
-from testApp.serializers import NoteSerializer
 
+from testApp.serializers import NoteSerializer
 from rest_framework import viewsets
+
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 
@@ -17,7 +18,7 @@ from rest_framework.permissions import AllowAny
 
 class NoteViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows tasks to be viewed or edited.
+    Add comments here
     """
     # authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)

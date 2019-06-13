@@ -29,16 +29,24 @@
 				<!-- WORKING WITH API HERE -->
 
                 <div class="row grid">
-					<!-- Add BIDDING for data-filter in the follwing class -->
+
+					<!-- WORKING BIDDING HERE -->
+
                     <div class="col-md-6 all Veg" v-for="menu in menus" :key="menu.id">
+
+					<!-- STOP WORKING BIDDING HERE -->
+
 						<div class="single-menu">
 							<div class="title-wrap d-flex justify-content-between">
+								<!-- calling menu title -->
 								<h4>{{menu.title}}</h4>
 								<h4 class="price">${{menu.price_guest}}</h4>
 							</div>	
+							<!-- calling menu content -->
 							<p>
 								{{menu.description}}
 							</p>	
+				
 							<h4 class="calorie">Calories {{menu.calories}}</h4>
 						</div>					                               
                     </div>

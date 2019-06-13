@@ -1,5 +1,5 @@
 """
-high level support for doing this and that.
+Add comments here.
 """
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter

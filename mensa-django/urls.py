@@ -19,10 +19,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('menu/', include('menus.urls')),
+    # path('menu/', include('menus.urls')),
     
     # code for django-vue integration
     path('', TemplateView.as_view(template_name='index.html')),
-    path('api/',include('testApp.urls'))
+    path('api/',include('menus.urls'))
     
 ]
